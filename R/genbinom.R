@@ -19,6 +19,7 @@
 #'     \code{pi = pi} and \code{theta = theta} has density
 #'     \deqn{Pr(G = g) = \begin{cases} x, g = 0 \\ y, g > 0\end{cases}}
 #'
+#' @aliases dgenbinom pgenbinom qgenbinom rgenbinom
 
 ## Density Function ##
 #' @export
@@ -134,14 +135,14 @@ pgenbinom <- Vectorize( function(g, pi, theta, size, lower.tail = TRUE) {
 #' @rdname GenBinomial
 #' @export
 
-qgenbinom <- Vectorize( function(g, pi, theta, size, lower.tail = TRUE) {
+qgenbinom <- Vectorize( function(p, pi, theta, size, lower.tail = TRUE) {
 
-  if (missing(g)) {
-    stop('g is missing and is a required input')
-  } else if (!is.numeric(g)) {
-    stop('g must be an integer valued input')
-  } else if (floor(g) != g) {
-    stop('g must be an integer valued input')
+  if (missing(p)) {
+    stop('p is missing and is a required input')
+  } else if (!is.numeric(p)) {
+    stop('p must be a numeric argument')
+  } else if (p < 0 | p > 1) {
+    stop('p must be a probability')
   }
 
   if (missing(pi)) {
@@ -173,20 +174,20 @@ qgenbinom <- Vectorize( function(g, pi, theta, size, lower.tail = TRUE) {
   }
 
   if (lower.tail == FALSE) {
-    g <- 1 - g
+    p <- 1 - p
   }
 
-  if (g <= 0) {
+  if (p <= 0) {
     quant <- 0
-  } else if (g >= 1) {
+  } else if (p >= 1) {
     quant <- size
   } else {
     cdf <- pgenbinom(g = 0:size, pi = pi, theta = theta, size = size)
-    quant <- which(cdf >= g)[[1]] - 1
+    quant <- which(cdf >= p)[[1]] - 1
   }
 
   return(quant)
-}, vectorize.args = "g")
+}, vectorize.args = "p")
 
 
 ## Random Generator ##
