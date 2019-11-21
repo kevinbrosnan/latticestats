@@ -1,14 +1,14 @@
 Package: latticestats
-Title: What the Package Does (One Line, Title Case)
+Title: Statistical Methods for Lattice Structures
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Kevin",
+           family = "Brosnan",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: What license it uses
+           email = "kevin.c.brosnan@gmail.com",
+           comment = c(ORCID = "0000-0002-0952-2134"))
+Description: Package provides methods for analysing lattice structured data.
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Suggests: 

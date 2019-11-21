@@ -12,7 +12,7 @@ dgenbinom(g, pi, theta, size)
 
 pgenbinom(g, pi, theta, size, lower.tail = TRUE)
 
-qgenbinom(g, pi, theta, size, lower.tail = TRUE)
+qgenbinom(p, pi, theta, size, lower.tail = TRUE)
 
 rgenbinom(n, pi, theta, size)
 }
@@ -28,9 +28,9 @@ rgenbinom(n, pi, theta, size)
 \item{lower.tail}{logical; if TRUE (default), probabilities are
 \eqn{Pr[X \leq x]}{Pr[X \le x]}, otherwise \eqn{Pr[X > x]}{Pr[X > x]}.}
 
-\item{n}{number of observations.}
-
 \item{p}{vector of probabilities.}
+
+\item{n}{number of observations.}
 }
 \description{
 Density, distribution function, quantile function and random
